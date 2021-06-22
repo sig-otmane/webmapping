@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+	  <meta charset="utf-8">
+	  <title>SIG WEB</title>
+
+	  <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+      <script src="https://js.arcgis.com/4.19/"></script>
+	  <style type="text/css">
+		html, body, #mapdiv{
+			height: 96%;
+			width: 99%;
+		}
+	  </style>
+</head>
+
+<body>
+    <h1>Afficher ma Map ici...</h1>
+    <div id="mapdiv"></div>
+    <script type="text/javascript">
+    	require(["esri/Map", "esri/views/MapView"],
+    		function(Map, MapView){
+    			var mamap = new Map({
+    				basemap: "topo"
+    			});
+
+    			var vue = new MapView({
+    				map: mamap,
+    				container: "mapdiv",
+    				center: [-1.34, 32.10],
+    				zoom: 5
+    			});
+
+    		});
+    </script>
+
+</body>
+</html>
