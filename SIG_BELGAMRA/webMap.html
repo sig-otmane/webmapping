@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+	  <title>SIG_BELGAMRA</title>
+	  <link rel="shortcut icon" href="img/logo.jpg" type="image/X-icon">
+
+	  <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+      <script src="https://js.arcgis.com/4.19/"></script>
+	  <style type="text/css">
+		html, body, #mapdiv{
+			height: 96%;
+			width: 99%;
+		}
+		h1{
+			text-align: center;
+		}
+	  </style>
+</head>
+
+<body>
+    <div id="title"> <marquee behavior="scroll" direction="left"><h2><b>Afficher ma Map ici... / Formation du 18/06/2021 par Otmane BELGAMRA</b></h2></marquee></div>
+    <address>
+		Écrit par : BELGAMRA Otmane<br> 
+		Contactez-nous sur:<a href="mailto:belgamrasig@gmail.com">belgamrasig@gmail.com</a><br>
+		Notre Chaîne YouTube: <a href="https://www.youtube.com/channel/UCQ2c4ALgKTnPB83y7jm-i_A">cliquez ici</a><br>
+	</address>
+
+    <div id="mapdiv"></div>
+    <script type="text/javascript">
+    	require(["esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer", "esri/widgets/Legend", "esri/widgets/Search"],
+    		function(Map, MapView, FeatureLayer, Legend, Search){
+    			var map1 = new Map({
+    				basemap: "satellite"
+    			});
+
+    			var vue1 = new MapView({
+    				map: map1,
+    				container: "mapdiv",
+    				center: [-102.81910289486908,35.856270288202545],
+    				zoom: 5
+    			});
+
+    			var couche = new FeatureLayer({
+    				url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/USA%20States/FeatureServer/0"
+    			});
+    			map1.add(couche);
+
+    			var legende = new Legend({
+    				view: vue1,
+    				layerInfos:[{
+    					layer: couche,
+    					title: "Ma couche"
+    				}]
+    			});
+    			 vue1.ui.add(legende, "top-right");
+
+    			 var recherche = new Search({
+    			 	view : vue1
+    			 });
+
+    			 vue1.ui.add(recherche, "bottom-right");
+
+    		});
+    </script>
+
+</body>
+</html>
